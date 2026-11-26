@@ -1,0 +1,9 @@
+name: Stop the runner inside a composite step that has a step after it
+description: Sends SIGTERM to Runner.Listener while the first of two composite steps is running.
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: ${{ github.action_path }}/../../stop-runner.sh
+    - shell: bash
+      run: echo "next step"
